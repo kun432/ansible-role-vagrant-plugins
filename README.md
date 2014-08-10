@@ -1,38 +1,49 @@
-Role Name
+ansible-role-vagrant-plugins
 =========
 
-A brief description of the role goes here.
+Ansible role for installing vagrant plugins
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- [Vagrant](http://www.vagrantup.com)
+- [Ansible](http://www.ansible.com)
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- `vagrant_plugins_plugins`
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+```yaml
+    - hosts: localhost
+      connection: local
+      vars: 
+        vagrant_plugins_plugins:
+          - { name: vagrant-omnibus }
+          - { name: sahara }
+          - { name: vagrant-digitalocean, version: 0.6.0 }
       roles:
-         - { role: username.rolename, x: 42 }
+        - kun432.vagrant-plugins
+```
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Kuniaki Shimizu <k.shimizu@8d1w.com>
+- github: @kun432
+- twitter: @kun432
+- Qiita: @kun432
+- Hatena ID: kun432
