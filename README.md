@@ -13,6 +13,9 @@ Role Variables
 --------------
 
 - `vagrant_plugins_plugins`
+  - list plugins to install the latest.
+- `vagrant_plugins_plugins_with_version`
+  - list plugins to install with targeted version.
 
 Dependencies
 ------------
@@ -29,6 +32,7 @@ Example Playbook
         vagrant_plugins_plugins:
           - { name: vagrant-omnibus }
           - { name: sahara }
+        vagrant_plugins_plugins_with_version:
           - { name: vagrant-digitalocean, version: 0.6.0 }
       roles:
         - kun432.vagrant-plugins
