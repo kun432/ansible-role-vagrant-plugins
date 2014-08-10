@@ -1,2 +1,7 @@
 ---
 # tasks file for vagrant-plugins
+
+- name: check if vagrant is installed
+  shell: which vagrant
+  register: if_vagrant_installed
+  failed_when: if_vagrant_installed.rc not in [0,1]
