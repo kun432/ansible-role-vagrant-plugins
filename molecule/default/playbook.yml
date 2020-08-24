@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+  - vagrant_plugins_plugins:
+    - sahara
+  - vagrant_plugins_plugins_with_version:
+    - { name: vagrant-digitalocean, version: 0.6.0 }
+  roles:
+  - role: kun432.vagrant-plugins

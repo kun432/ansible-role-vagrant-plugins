@@ -1,0 +1,14 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: vagrant plugin list
+      command: vagrant plugin list
+      register: vagrant_out
+      changed_when: false
+    - name: Assert command result
+      assert:
+        that:
+          - "'sahara (0.0.17, global)' in vagrant_out.stdout"
+          - "'vagrant-digitalocean (0.6.0, global)' in vagrant_out.stdout"
