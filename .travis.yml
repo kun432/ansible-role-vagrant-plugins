@@ -1,0 +1,32 @@
+---
+
+dist: bionic
+
+language: python
+python:
+  - 3.6
+
+env:
+  global:
+    - ROLE_NAME: kun432.vagrant-plugins
+    - PROVIDER_NAME: libvirt
+  matrix:
+    - MOLECULE_DISTRO_BOX: generic/ubuntu2004
+    - MOLECULE_DISTRO_BOX: generic/centos8
+
+install:
+  - sudo add-apt-repository universe && sudo apt update
+  - wget https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
+  - sudo dpkg -i vagrant_2.2.9_x86_64.deb
+  - sudo apt install qemu-kvm qemu-utils libvirt-bin libvirt0 libvirt-dev
+  - vagrant plugin install vagrant-libvirt
+  - pip install molecule==2.22 ansible-lint python-vagrant
+  - sudo chmod o+rwx /var/run/libvirt/libvirt-sock
+
+before_script:
+  - cd ../
+  - ln -s ansible-role-vagrant-plugins $ROLE_NAME
+  - cd $ROLE_NAME
+
+script:
+  - molecule test

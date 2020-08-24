@@ -4,13 +4,17 @@ dependency:
 driver:
   name: vagrant
   provider:
-    name: virtualbox
+    name: ${PROVIDER_NAME-virtualbox}
+    driver: kvm # Ignored by virtualbox
+    options:
+      memory: 2048
+      cpus: 1
 lint:
   name: yamllint
   enabled: false
 platforms:
   - name: instance
-    box: generic/ubuntu2004
+    box: ${MOLECULE_DISTRO_BOX-generic/ubuntu2004}
 provisioner:
   name: ansible
   lint:
