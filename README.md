@@ -46,8 +46,9 @@ MIT
 Author Information
 ------------------
 
-Kuniaki Shimizu <k.shimizu@8d1w.com>
-- github: @kun432
-- twitter: @kun432
-- Qiita: @kun432
-- Hatena ID: kun432
+- Kuniaki Shimizu <k.shimizu@8d1w.com>
+  - github: @kun432
+  - twitter: @kun432
+  - Qiita: @kun432
+  - Hatena ID: kun432
+- Jean-Pierre Matsumoto <jp@matsusoft.com>

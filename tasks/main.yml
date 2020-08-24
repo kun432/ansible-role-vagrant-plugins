@@ -2,19 +2,20 @@
 # tasks file for vagrant-plugins
 
 - name: check if vagrant is installed
-  shell: which vagrant
+  command: which vagrant
   register: if_vagrant_installed
   failed_when: if_vagrant_installed.rc not in [0,1]
   changed_when: false
 
 - name: install vagrant plugins
-  shell: vagrant plugin install {{ item }}
+  command: vagrant plugin install {{ item }}
   with_items: "{{ vagrant_plugins_plugins }}"
   when: vagrant_plugins_plugins is defined
   changed_when: false # to pass molecule idempotency test
 
 - name: install vagrant plugins with version
-  shell: vagrant plugin install {{ item.name }} --plugin-version {{ item.version}}
+  command: >
+    vagrant plugin install {{ item.name }} --plugin-version {{ item.version }}
   with_items: "{{ vagrant_plugins_plugins_with_version }}"
   when: vagrant_plugins_plugins_with_version is defined
   changed_when: false # to pass molecule idempotency test
