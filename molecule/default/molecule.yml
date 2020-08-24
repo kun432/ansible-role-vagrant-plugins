@@ -1,0 +1,23 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint:
+  name: yamllint
+  enabled: false
+platforms:
+  - name: instance
+    box: generic/ubuntu2004
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+    enabled: false
+verifier:
+  name: ansible
+  lint:
+    name: ansible-lint
+    enabled: false

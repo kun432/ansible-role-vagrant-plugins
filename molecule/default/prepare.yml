@@ -1,0 +1,16 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  tasks:
+  - name: Install vagrant
+    block:
+    - name: Install vagrant with apt
+      apt:
+        update_cache: yes
+        name: vagrant
+      when: ansible_os_family == "Debian"
+    - name: Install vagrant with dnf
+      dnf:
+        name: https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.rpm
+      when: ansible_os_family == "RedHat"
